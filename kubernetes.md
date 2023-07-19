@@ -74,4 +74,3 @@ Helm est un outil qui permet de g√©rer des packages Kubernetes. Il permet de cr√
 pour installer Helm, il faut utiliser la commande `scoop install helm`
 
 pour plus d'informations sur Helm, il faut utiliser la commande `helm help` ou aller sur le site [helm.sh](https://helm.sh/)
-
