@@ -1,0 +1,63 @@
+
+# Renseigner que c'est un fichier de configuration pour kubernetes
+apiVersion: apps/v1
+# Le type de ressource
+kind: Deployment
+# Metadonnées de la ressources
+metadata:
+  # Nom de ma ressource
+  name: nginx-demo
+  # Lien avec mes elements
+  labels:
+    app: nginx
+
+# Specification du deployment
+spec:
+  # Information sur les replicats de pods
+  replicas: 3
+  # Lien d'appel de la ressource
+  selector:
+    matchLabels:
+      app: nginx
+  # Template = pod
+  template: 
+    # Métadonnées du pod
+    metadata:
+      labels:
+        app: nginx
+    # Spécification du pod
+    spec: 
+      containers:
+      - name: nginx
+        image: nginx:stable-alpine3.17
+        ports:
+        - containerPort: 8080
+        # Limite ressource utilisation
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+
+      # - name: mangodb
+      #   image: mongo
+      #   # Ouverture du port Mongo
+      #   ports:
+      #     - 27017:27017
+      #   # Déploiement dans un reseau
+      #   networks:
+      #     - app-mongo-VNet
+
+      #   # Conteneur de mon ui pour mongodb
+      # - name: mongo-express
+      #     # Port du conteneur
+      #   ports:
+      #     - 8081:8081
+      #   environment:
+      #       # Renseigne le nom du service contenant la bdd
+      #   ME_CONFIG_MONGODB_SERVER: mongodb
+      #     #  Dépendance de mon conteneur
+      #   depends_on:
+      #     - mongodb
+      #   networks:
+      #     - app-mongo-VNet
+

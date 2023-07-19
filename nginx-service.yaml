@@ -1,0 +1,19 @@
+# ceci est un fichier de configuration kubernetes pour un service nginx
+apiVersion: v1
+# type de fichier de configuration
+kind: Service
+# Metadonnées du fichier de configuration
+metadata:
+  # Nom de ma ressource
+  name: nginx-service
+# Specification du service
+spec:
+  # lier mon service à son deployment
+  selector:
+    app: nginx
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+
+

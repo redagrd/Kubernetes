@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: express-service
+spec:
+  # option qui rend le service externe
+  type: LoadBalancer
+  selector:
+    app: express
+  ports:
+  - port: 8081
+    protocol: TCP
+    targetPort: 8081
+    # port exterieur du node. La valeur doit etre comprise entre 30000 et 32767
+    nodePort: 30000

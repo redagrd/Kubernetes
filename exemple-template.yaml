@@ -1,0 +1,17 @@
+# template de pod pour helm chats
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.Name }}
+  labels:
+    app: {{ .Values.label }}
+spec:
+  containers:
+  - name: {{ .Values.container.name }}
+    image: {{ .Values.container.image }}
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: {{ .Values.container.port }}

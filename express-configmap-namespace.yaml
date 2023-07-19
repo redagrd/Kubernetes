@@ -1,0 +1,10 @@
+# pour ajouter un namespace à la configmap, il faut ajouter le champ namespace dans le fichier de configmap
+# cela peut se faire sur chaque fichier kubernetes ou sur un fichier dédié
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: express-configmap
+  # namespace
+  namespace: mon-namespace
+data:
+  database_urls: mongodb-service.mon-namespace
