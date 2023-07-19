@@ -37,27 +37,12 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-
-      # - name: mangodb
-      #   image: mongo
-      #   # Ouverture du port Mongo
-      #   ports:
-      #     - 27017:27017
-      #   # Déploiement dans un reseau
-      #   networks:
-      #     - app-mongo-VNet
-
-      #   # Conteneur de mon ui pour mongodb
-      # - name: mongo-express
-      #     # Port du conteneur
-      #   ports:
-      #     - 8081:8081
-      #   environment:
-      #       # Renseigne le nom du service contenant la bdd
-      #   ME_CONFIG_MONGODB_SERVER: mongodb
-      #     #  Dépendance de mon conteneur
-      #   depends_on:
-      #     - mongodb
-      #   networks:
-      #     - app-mongo-VNet
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: mon-volume
+      # ajout de mon volume
+      volumes:
+      - name: mon-volume
+        persistentVolumeClaim:
+          claimName: volume-claim-persitant
 

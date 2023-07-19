@@ -1,0 +1,43 @@
+
+# Renseigner que c'est un fichier de configuration pour kubernetes
+apiVersion: apps/v1
+# Le type de ressource
+kind: statefulset
+# Metadonnées de la ressources
+metadata:
+  # Nom de ma ressource
+  name: my-statefulset
+# Specification du deployment
+spec:
+  # Information sur les replicats de pods
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongodb
+  serviceName: mongodb-service
+  # Template = pod
+  template: 
+    # Métadonnées du pod
+    metadata:
+      labels:
+        app: mongodb
+    # Spécification du pod
+    spec: 
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+          name: web
+        volumeMounts:
+        - mountPath: /data/db
+          name: mon-volume
+  volumeClaimTemplates:
+  - metadata:
+      name: mongo-persistent
+      # ajout de mon volume
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: 10Gi

@@ -67,6 +67,8 @@ pour appliquer un Ingress, il faut utiliser la commande `kubectl apply -f "nom_i
 il faut aussi modifier le fichier hosts de votre ordinateur pour pouvoir accéder à l'Ingress. Pour cela, il faut ajouter la ligne suivante:  
 `"adresse_ip_ingress" "nom_ingress"`. Cela modifiera la résolution DNS de votre ordinateur pour que l'adresse IP de l'Ingress soit associée au nom de l'Ingress.
 
+voir fichier nginx-ingress.yaml
+
 ## Helm
 
 Helm est un outil qui permet de gérer des packages Kubernetes. Il permet de créer des packages, de les installer, de les mettre à jour et de les supprimer.
@@ -74,3 +76,31 @@ Helm est un outil qui permet de gérer des packages Kubernetes. Il permet de cr�
 pour installer Helm, il faut utiliser la commande `scoop install helm`
 
 pour plus d'informations sur Helm, il faut utiliser la commande `helm help` ou aller sur le site [helm.sh](https://helm.sh/)
+
+## Les volumes
+
+Les volumes permettent de stocker des données persistantes. Il existe 3 types de volumes:
+
+- emptyDir: le volume est créé avec le pod et il est supprimé avec le pod
+- hostPath: le volume est créé avec le pod et il est supprimé avec le pod. Il est stocké sur le noeud
+- persistentVolume: le volume est créé indépendamment du pod et il est supprimé indépendamment du pod. Il est stocké sur un serveur de stockage
+
+voir fichier perisistant-demo.yaml
+
+## Les storageClasses
+
+Les storageClasses permettent de créer des persistentVolumes dynamiquement. Il existe 2 types de storageClasses:
+
+- standard: le volume est créé sur un serveur de stockage
+- local: le volume est créé sur le noeud
+
+voir fichier storage-class-demo.yaml
+
+## Les statefulSets
+
+Les statefulSets permettent de créer des pods avec un nom unique et un stockage persistant. Il existe 2 types de statefulSets:
+
+- headless: le pod n'a pas d'adresse IP fixe
+- non-headless: le pod a une adresse IP fixe
+
+voir fichier stateful-demo.yaml

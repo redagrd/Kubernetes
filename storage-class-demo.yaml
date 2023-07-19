@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: storageClass
+metadata:
+  name: storage-class-demo
+  # un storage backend qui peut provisionner des persistent volume
+  # ici provisionner en interne par kubernetes
+provisioner: kubernetes.io/aws-ebs
+# paramètre des storage class
+parameters:
+  type: io1
+  iopPerGB: "10"
+  fsType: ext4
+  
