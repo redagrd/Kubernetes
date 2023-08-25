@@ -4,8 +4,6 @@
 
 Découverte du fonctionnement de Kubernetes avec démonstration et exercices vu durant une formation data chez M2I
 
-# Simple Projet Python : Découverte Data Engineering
-
 ## Prérequis
 
 - Python 3.8
@@ -13,7 +11,7 @@ Découverte du fonctionnement de Kubernetes avec démonstration et exercices vu 
 - Docker-compose
 - minikube
 
-## démarrer secrets, les pods et les services, dans cet ordre
+## démarrer les secrets, les pods et les services, dans cet ordre
 
 ```bash
 kubectl apply -f "nom_secret.yaml"
